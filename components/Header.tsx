@@ -1,9 +1,14 @@
+"use client"
+
 import Image from "next/image"
 import logo from '../public/images/logo.png'
 import styles from './Header.module.css';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from "react-redux";
+import { RootState } from '../lib/store/store';
 
 export default function Header() {
+    const length = useSelector((state: RootState) => state.cart.length);
+
     return (
         <>
 
@@ -14,10 +19,10 @@ export default function Header() {
                 </div>
 
                 <div className={styles.right}>
-                    <button><ShoppingCartIcon /></button>
+                    <button> 🛒 Cart ({length})</button>
                 </div>
             </div>
-            
+
         </>
     )
 }
